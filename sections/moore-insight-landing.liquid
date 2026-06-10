@@ -1,0 +1,365 @@
+{% comment %}
+Moore Insight landing page section — fully editable via Shopify Theme Editor.
+Italicised words in richtext headings render in gold (handled by CSS).
+{% endcomment %}
+
+<header id="header">
+  <div class="container nav">
+    <div class="brand gold-text">{{ section.settings.nav_brand_name }}<small>{{ section.settings.nav_brand_tagline }}</small></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#pillars">Vision</a></li>
+      <li><a href="#consulting">Consulting</a></li>
+      <li><a href="#shop">Shop</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#shop" class="nav-cta">{{ section.settings.nav_cta_text }}</a>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-banner"></div>
+  <div class="hero-inner">
+    <div class="eyebrow">{{ section.settings.hero_eyebrow }}</div>
+    <h1>{{ section.settings.hero_heading | remove: '<p>' | remove: '</p>' }}</h1>
+    <p class="sub">{{ section.settings.hero_subtext }}</p>
+    <div class="hero-actions">
+      <a href="{{ section.settings.hero_btn1_link | default: '#shop' }}" class="btn-gold">{{ section.settings.hero_btn1_text }}</a>
+      <a href="{{ section.settings.hero_btn2_link | default: '#consulting' }}" class="btn-ghost">{{ section.settings.hero_btn2_text }}</a>
+    </div>
+  </div>
+  <div class="scroll-cue">Scroll</div>
+</section>
+
+<!-- PILLARS -->
+<section class="pillars" id="pillars">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">{{ section.settings.pillars_kicker }}</div>
+      <h2>{{ section.settings.pillars_heading | remove: '<p>' | remove: '</p>' }}</h2>
+      <div class="divider"><span></span><i></i><span></span></div>
+      <p>{{ section.settings.pillars_subtext }}</p>
+    </div>
+    <div class="pillar-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'pillar' %}
+          <div class="pillar reveal" {{ block.shopify_attributes }}>
+            <span class="glyph gold-text">{{ block.settings.glyph }}</span>
+            <h3>{{ block.settings.title }}</h3>
+            <p>{{ block.settings.text }}</p>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- CONSULTING -->
+<section id="consulting">
+  <div class="container split">
+    <div class="split-visual reveal">
+      {% if section.settings.consulting_image != blank %}
+        <img src="{{ section.settings.consulting_image | image_url: width: 800 }}" alt="{{ section.settings.consulting_image.alt | default: 'Moore Insight consulting' }}">
+      {% else %}
+        <img src="{{ 'queen.png' | asset_url }}" alt="Moore Insight emblem — Kemetic queen" onerror="this.style.display='none';this.parentElement.style.background='radial-gradient(circle,#1c1407,#000)';">
+      {% endif %}
+    </div>
+    <div class="split-text reveal">
+      <div class="kicker">{{ section.settings.consulting_kicker }}</div>
+      <h2>{{ section.settings.consulting_heading | remove: '<p>' | remove: '</p>' }}</h2>
+      {{ section.settings.consulting_text }}
+      <ul class="split-list">
+        {% if section.settings.consulting_li1 != blank %}<li><i>𓍯</i> {{ section.settings.consulting_li1 }}</li>{% endif %}
+        {% if section.settings.consulting_li2 != blank %}<li><i>𓍯</i> {{ section.settings.consulting_li2 }}</li>{% endif %}
+        {% if section.settings.consulting_li3 != blank %}<li><i>𓍯</i> {{ section.settings.consulting_li3 }}</li>{% endif %}
+        {% if section.settings.consulting_li4 != blank %}<li><i>𓍯</i> {{ section.settings.consulting_li4 }}</li>{% endif %}
+      </ul>
+      <a href="{{ section.settings.consulting_btn_link | default: '#contact' }}" class="btn-gold">{{ section.settings.consulting_btn_text }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS / SHOP -->
+<section class="products" id="shop">
+  <div class="container">
+    <div class="sec-head reveal">
+      <div class="kicker">{{ section.settings.shop_kicker }}</div>
+      <h2>{{ section.settings.shop_heading | remove: '<p>' | remove: '</p>' }}</h2>
+      <div class="divider"><span></span><i></i><span></span></div>
+      <p>{{ section.settings.shop_subtext }}</p>
+    </div>
+    <div class="prod-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'product_card' %}
+          <div class="prod reveal" {{ block.shopify_attributes }}>
+            <div class="prod-img"><span class="sigil gold-text">{{ block.settings.sigil }}</span></div>
+            <div class="prod-body">
+              <div class="tag">{{ block.settings.tag }}</div>
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.text }}</p>
+              <div class="prod-foot">
+                <span class="price gold-text">{{ block.settings.price }}{% if block.settings.price_suffix != blank %}<span style="font-size:.8rem;color:var(--muted)">{{ block.settings.price_suffix }}</span>{% endif %}</span>
+                <a href="{{ block.settings.link | default: '#' }}">{{ block.settings.btn_text }}</a>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <div class="container reveal">
+    <blockquote class="cormorant">"{{ section.settings.quote_text }}"</blockquote>
+    <cite>{{ section.settings.quote_cite }}</cite>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container split">
+    <div class="split-text reveal" style="order:1">
+      <div class="kicker">{{ section.settings.about_kicker }}</div>
+      <h2>{{ section.settings.about_heading | remove: '<p>' | remove: '</p>' }}</h2>
+      {{ section.settings.about_text }}
+      <a href="{{ section.settings.about_btn_link | default: '#contact' }}" class="btn-ghost">{{ section.settings.about_btn_text }}</a>
+    </div>
+    <div class="split-visual reveal" style="order:2">
+      {% if section.settings.about_image != blank %}
+        <img src="{{ section.settings.about_image | image_url: width: 800 }}" alt="{{ section.settings.about_image.alt | default: 'Moore Insight about' }}">
+      {% else %}
+        <img src="{{ 'king.png' | asset_url }}" alt="Moore Insight emblem — Kemetic king" onerror="this.style.display='none';this.parentElement.style.background='radial-gradient(circle,#1c1407,#000)';">
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <div class="container reveal">
+    <h2>{{ section.settings.cta_heading | remove: '<p>' | remove: '</p>' }}</h2>
+    <p>{{ section.settings.cta_subtext }}</p>
+    <div class="hero-actions" style="opacity:1;animation:none">
+      <a href="{{ section.settings.cta_btn1_link | default: '#shop' }}" class="btn-gold">{{ section.settings.cta_btn1_text }}</a>
+      <a href="mailto:{{ section.settings.contact_email }}" class="btn-ghost">{{ section.settings.cta_btn2_text }}</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <div class="brand gold-text">{{ section.settings.nav_brand_name }} LLC</div>
+        <p>{{ section.settings.footer_brand_text }}</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
+        <a href="#pillars">Vision</a>
+        <a href="#consulting">Consulting</a>
+        <a href="#shop">Shop</a>
+        <a href="#about">About</a>
+      </div>
+      <div class="foot-col">
+        <h4>Connect</h4>
+        {% if section.settings.social_youtube != blank %}<a href="{{ section.settings.social_youtube }}" target="_blank" rel="noopener">YouTube</a>{% endif %}
+        {% if section.settings.social_tiktok != blank %}<a href="{{ section.settings.social_tiktok }}" target="_blank" rel="noopener">TikTok</a>{% endif %}
+        {% if section.settings.social_instagram != blank %}<a href="{{ section.settings.social_instagram }}" target="_blank" rel="noopener">Instagram</a>{% endif %}
+        <a href="mailto:{{ section.settings.contact_email }}">Email</a>
+      </div>
+      <div class="foot-col">
+        <h4>Company</h4>
+        {% if section.settings.footer_privacy_link != blank %}<a href="{{ section.settings.footer_privacy_link }}">Privacy Policy</a>{% endif %}
+        {% if section.settings.footer_terms_link != blank %}<a href="{{ section.settings.footer_terms_link }}">Terms of Service</a>{% endif %}
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>{{ section.settings.footer_copyright }}</span>
+      <span>{{ section.settings.footer_tagline }}</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>40));
+const toggle=document.getElementById('menuToggle'),links=document.getElementById('navLinks');
+toggle.addEventListener('click',()=>links.classList.toggle('open'));
+links.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>links.classList.remove('open')));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+
+
+{% schema %}
+{
+  "name": "Moore Insight Landing",
+  "settings": [
+    { "type": "header", "content": "Navigation" },
+    { "type": "text", "id": "nav_brand_name", "label": "Brand name", "default": "Moore Insight" },
+    { "type": "text", "id": "nav_brand_tagline", "label": "Brand tagline (under logo)", "default": "L   L   C" },
+    { "type": "text", "id": "nav_cta_text", "label": "Nav CTA button text", "default": "Enter the Shop" },
+
+    { "type": "header", "content": "Hero" },
+    { "type": "text", "id": "hero_eyebrow", "label": "Eyebrow text", "default": "Ancient Wisdom · Modern Intelligence" },
+    { "type": "richtext", "id": "hero_heading", "label": "Hero heading (italicise a word to make it gold)", "default": "<p>Where the wisdom of <em>Kemet<\/em> meets the power of tomorrow.<\/p>" },
+    { "type": "textarea", "id": "hero_subtext", "label": "Hero subtext", "default": "Moore Insight blends ancient African knowledge with cutting-edge AI and technology — through content, consulting, and education that elevates the mind and the legacy." },
+    { "type": "text", "id": "hero_btn1_text", "label": "Primary button text", "default": "Explore the Collection" },
+    { "type": "url", "id": "hero_btn1_link", "label": "Primary button link" },
+    { "type": "text", "id": "hero_btn2_text", "label": "Secondary button text", "default": "Work With Us" },
+    { "type": "url", "id": "hero_btn2_link", "label": "Secondary button link" },
+
+    { "type": "header", "content": "Pillars section" },
+    { "type": "text", "id": "pillars_kicker", "label": "Kicker label", "default": "The Three Pillars" },
+    { "type": "richtext", "id": "pillars_heading", "label": "Section heading (italicise a word to make it gold)", "default": "<p>Knowledge, refined into <em>gold<\/em>.<\/p>" },
+    { "type": "textarea", "id": "pillars_subtext", "label": "Section description", "default": "We stand at the meeting point of heritage and innovation — preserving the old, decoding the new." },
+
+    { "type": "header", "content": "Consulting section" },
+    { "type": "image_picker", "id": "consulting_image", "label": "Consulting image (leave blank to use default)" },
+    { "type": "text", "id": "consulting_kicker", "label": "Kicker label", "default": "Consulting & Strategy" },
+    { "type": "richtext", "id": "consulting_heading", "label": "Section heading", "default": "<p>Insight that moves you forward.<\/p>" },
+    { "type": "richtext", "id": "consulting_text", "label": "Description", "default": "<p>From AI implementation to brand storytelling and content systems, we partner with businesses and creators to build something enduring — rooted in wisdom, sharpened by technology.<\/p>" },
+    { "type": "text", "id": "consulting_li1", "label": "Service item 1", "default": "AI tool development & workflow automation" },
+    { "type": "text", "id": "consulting_li2", "label": "Service item 2", "default": "Content strategy & cultural storytelling" },
+    { "type": "text", "id": "consulting_li3", "label": "Service item 3", "default": "Technology consulting & digital transformation" },
+    { "type": "text", "id": "consulting_li4", "label": "Service item 4 (leave blank to hide)", "default": "Educational program design" },
+    { "type": "text", "id": "consulting_btn_text", "label": "Button text", "default": "Book a Consultation" },
+    { "type": "url", "id": "consulting_btn_link", "label": "Button link" },
+
+    { "type": "header", "content": "Shop \/ Products section" },
+    { "type": "text", "id": "shop_kicker", "label": "Kicker label", "default": "The Collection" },
+    { "type": "richtext", "id": "shop_heading", "label": "Section heading (italicise a word to make it gold)", "default": "<p>Tools, knowledge & <em>treasures<\/em>.<\/p>" },
+    { "type": "textarea", "id": "shop_subtext", "label": "Section description", "default": "Curated offerings for the seeker, the builder, and the scholar. Connect your Shopify catalog to populate this section automatically." },
+
+    { "type": "header", "content": "Quote section" },
+    { "type": "textarea", "id": "quote_text", "label": "Quote text (without quotation marks)", "default": "Man, know thyself, and thou shalt know the gods." },
+    { "type": "text", "id": "quote_cite", "label": "Citation", "default": "— Inscribed at the Temple of Kemet" },
+
+    { "type": "header", "content": "About section" },
+    { "type": "image_picker", "id": "about_image", "label": "About image (leave blank to use default)" },
+    { "type": "text", "id": "about_kicker", "label": "Kicker label", "default": "Who We Are" },
+    { "type": "richtext", "id": "about_heading", "label": "Section heading", "default": "<p>A house built on legacy.<\/p>" },
+    { "type": "richtext", "id": "about_text", "label": "About description (supports multiple paragraphs)", "default": "<p>Moore Insight LLC is a content and consulting practice founded at the intersection of ancient African heritage and modern intelligence. We believe the deepest wisdom of the past holds the keys to mastering the future.<\/p><p>Through media, education, and strategic consulting, we help individuals and organizations think more clearly, build more boldly, and honor the brilliance that came before us.<\/p>" },
+    { "type": "text", "id": "about_btn_text", "label": "Button text", "default": "Start a Conversation" },
+    { "type": "url", "id": "about_btn_link", "label": "Button link" },
+
+    { "type": "header", "content": "CTA section" },
+    { "type": "richtext", "id": "cta_heading", "label": "CTA heading (italicise a word to make it gold)", "default": "<p>Step into the <em>insight<\/em>.<\/p>" },
+    { "type": "textarea", "id": "cta_subtext", "label": "CTA subtext", "default": "Join the community, explore the collection, or partner with us on your next breakthrough." },
+    { "type": "text", "id": "cta_btn1_text", "label": "Primary button text", "default": "Visit the Shop" },
+    { "type": "url", "id": "cta_btn1_link", "label": "Primary button link" },
+    { "type": "text", "id": "cta_btn2_text", "label": "Email button text", "default": "Email Us" },
+
+    { "type": "header", "content": "Contact" },
+    { "type": "text", "id": "contact_email", "label": "Contact email address", "default": "hello@mooreinsight.com" },
+
+    { "type": "header", "content": "Footer" },
+    { "type": "textarea", "id": "footer_brand_text", "label": "Footer brand description", "default": "Ancient wisdom. Modern intelligence. Content, consulting, and education at the meeting point of heritage and technology." },
+    { "type": "url", "id": "social_youtube", "label": "YouTube URL (leave blank to hide)" },
+    { "type": "url", "id": "social_tiktok", "label": "TikTok URL (leave blank to hide)" },
+    { "type": "url", "id": "social_instagram", "label": "Instagram URL (leave blank to hide)" },
+    { "type": "url", "id": "footer_privacy_link", "label": "Privacy Policy URL (leave blank to hide)" },
+    { "type": "url", "id": "footer_terms_link", "label": "Terms of Service URL (leave blank to hide)" },
+    { "type": "text", "id": "footer_copyright", "label": "Copyright line", "default": "© 2026 Moore Insight LLC. All rights reserved." },
+    { "type": "text", "id": "footer_tagline", "label": "Footer tagline", "default": "Crafted in gold & black." }
+  ],
+  "blocks": [
+    {
+      "type": "pillar",
+      "name": "Pillar",
+      "settings": [
+        { "type": "text", "id": "glyph", "label": "Hieroglyph symbol", "default": "𓃹" },
+        { "type": "text", "id": "title", "label": "Pillar title", "default": "Cultural History" },
+        { "type": "textarea", "id": "text", "label": "Pillar description", "default": "Deeply researched content on ancient African and Kemetic civilization — the scholarship, the symbolism, and the legacy that shaped the world." }
+      ]
+    },
+    {
+      "type": "product_card",
+      "name": "Product Card",
+      "settings": [
+        { "type": "text", "id": "sigil", "label": "Hieroglyph symbol", "default": "𓂀" },
+        { "type": "text", "id": "tag", "label": "Category tag", "default": "Digital · Course" },
+        { "type": "text", "id": "title", "label": "Product title", "default": "Product Name" },
+        { "type": "textarea", "id": "text", "label": "Product description", "default": "A brief description of this offering." },
+        { "type": "text", "id": "price", "label": "Price (e.g. $49)", "default": "$49" },
+        { "type": "text", "id": "price_suffix", "label": "Price suffix — e.g. /mo (leave blank if none)", "default": "" },
+        { "type": "text", "id": "btn_text", "label": "Button text", "default": "View" },
+        { "type": "url", "id": "link", "label": "Product link" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Moore Insight Landing",
+      "blocks": [
+        {
+          "type": "pillar",
+          "settings": {
+            "glyph": "𓃹",
+            "title": "Cultural History",
+            "text": "Deeply researched content on ancient African and Kemetic civilization — the scholarship, the symbolism, and the legacy that shaped the world."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "glyph": "𓂀",
+            "title": "AI & Technology",
+            "text": "Practical AI tools, automation, and digital strategy. We translate emerging technology into tangible advantage for creators and businesses."
+          }
+        },
+        {
+          "type": "pillar",
+          "settings": {
+            "glyph": "𓂽",
+            "title": "Education & Media",
+            "text": "Programming, courses, and storytelling across YouTube, TikTok, and beyond — built to inform, empower, and inspire a global audience."
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "sigil": "𓂀",
+            "tag": "Digital · Course",
+            "title": "The Kemetic Wisdom Series",
+            "text": "A guided journey through ancient African philosophy, the Hermetic principles, and their living relevance today.",
+            "price": "$49",
+            "price_suffix": "",
+            "btn_text": "View"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "sigil": "𓃹",
+            "tag": "AI · Toolkit",
+            "title": "Creator AI Toolkit",
+            "text": "Prompts, templates, and automations for content creators ready to harness AI without losing their voice.",
+            "price": "$79",
+            "price_suffix": "",
+            "btn_text": "View"
+          }
+        },
+        {
+          "type": "product_card",
+          "settings": {
+            "sigil": "𓂽",
+            "tag": "Membership",
+            "title": "Moore Insight Members",
+            "text": "Exclusive programming, early access content, and a community at the crossroads of culture and technology.",
+            "price": "$15",
+            "price_suffix": "\/mo",
+            "btn_text": "Join"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

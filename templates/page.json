@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "main": {
+      "type": "moore-insight-landing",
+      "settings": {
+        "contact_email": "hello@mooreinsight.com"
+      }
+    }
+  },
+  "order": ["main"]
+}
