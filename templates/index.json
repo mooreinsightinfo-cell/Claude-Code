@@ -1,0 +1,109 @@
+{
+  "sections": {
+    "main": {
+      "type": "moore-insight-landing",
+      "blocks": {
+        "pillar-1": {
+          "type": "pillar",
+          "settings": {
+            "glyph": "𓃹",
+            "title": "Cultural History",
+            "text": "Deeply researched content on ancient African and Kemetic civilization — the scholarship, the symbolism, and the legacy that shaped the world."
+          }
+        },
+        "pillar-2": {
+          "type": "pillar",
+          "settings": {
+            "glyph": "𓂀",
+            "title": "AI & Technology",
+            "text": "Practical AI tools, automation, and digital strategy. We translate emerging technology into tangible advantage for creators and businesses."
+          }
+        },
+        "pillar-3": {
+          "type": "pillar",
+          "settings": {
+            "glyph": "𓂽",
+            "title": "Education & Media",
+            "text": "Programming, courses, and storytelling across YouTube, TikTok, and beyond — built to inform, empower, and inspire a global audience."
+          }
+        },
+        "product-1": {
+          "type": "product_card",
+          "settings": {
+            "sigil": "𓂀",
+            "tag": "Digital · Course",
+            "title": "The Kemetic Wisdom Series",
+            "text": "A guided journey through ancient African philosophy, the Hermetic principles, and their living relevance today.",
+            "price": "$49",
+            "price_suffix": "",
+            "btn_text": "View"
+          }
+        },
+        "product-2": {
+          "type": "product_card",
+          "settings": {
+            "sigil": "𓃹",
+            "tag": "AI · Toolkit",
+            "title": "Creator AI Toolkit",
+            "text": "Prompts, templates, and automations for content creators ready to harness AI without losing their voice.",
+            "price": "$79",
+            "price_suffix": "",
+            "btn_text": "View"
+          }
+        },
+        "product-3": {
+          "type": "product_card",
+          "settings": {
+            "sigil": "𓂽",
+            "tag": "Membership",
+            "title": "Moore Insight Members",
+            "text": "Exclusive programming, early access content, and a community at the crossroads of culture and technology.",
+            "price": "$15",
+            "price_suffix": "/mo",
+            "btn_text": "Join"
+          }
+        }
+      },
+      "block_order": ["pillar-1","pillar-2","pillar-3","product-1","product-2","product-3"],
+      "settings": {
+        "nav_brand_name": "Moore Insight",
+        "nav_brand_tagline": "L   L   C",
+        "nav_cta_text": "Enter the Shop",
+        "hero_eyebrow": "Ancient Wisdom · Modern Intelligence",
+        "hero_heading": "<p>Where the wisdom of <em>Kemet<\/em> meets the power of tomorrow.<\/p>",
+        "hero_subtext": "Moore Insight blends ancient African knowledge with cutting-edge AI and technology — through content, consulting, and education that elevates the mind and the legacy.",
+        "hero_btn1_text": "Explore the Collection",
+        "hero_btn2_text": "Work With Us",
+        "pillars_kicker": "The Three Pillars",
+        "pillars_heading": "<p>Knowledge, refined into <em>gold<\/em>.<\/p>",
+        "pillars_subtext": "We stand at the meeting point of heritage and innovation — preserving the old, decoding the new.",
+        "consulting_kicker": "Consulting & Strategy",
+        "consulting_heading": "<p>Insight that moves you forward.<\/p>",
+        "consulting_text": "<p>From AI implementation to brand storytelling and content systems, we partner with businesses and creators to build something enduring — rooted in wisdom, sharpened by technology.<\/p>",
+        "consulting_li1": "AI tool development & workflow automation",
+        "consulting_li2": "Content strategy & cultural storytelling",
+        "consulting_li3": "Technology consulting & digital transformation",
+        "consulting_li4": "Educational program design",
+        "consulting_btn_text": "Book a Consultation",
+        "shop_kicker": "The Collection",
+        "shop_heading": "<p>Tools, knowledge & <em>treasures<\/em>.<\/p>",
+        "shop_subtext": "Curated offerings for the seeker, the builder, and the scholar. Connect your Shopify catalog to populate this section automatically.",
+        "quote_text": "Man, know thyself, and thou shalt know the gods.",
+        "quote_cite": "— Inscribed at the Temple of Kemet",
+        "about_kicker": "Who We Are",
+        "about_heading": "<p>A house built on legacy.<\/p>",
+        "about_text": "<p>Moore Insight LLC is a content and consulting practice founded at the intersection of ancient African heritage and modern intelligence. We believe the deepest wisdom of the past holds the keys to mastering the future.<\/p><p>Through media, education, and strategic consulting, we help individuals and organizations think more clearly, build more boldly, and honor the brilliance that came before us.<\/p>",
+        "about_btn_text": "Start a Conversation",
+        "cta_heading": "<p>Step into the <em>insight<\/em>.<\/p>",
+        "cta_subtext": "Join the community, explore the collection, or partner with us on your next breakthrough.",
+        "cta_btn1_text": "Visit the Shop",
+        "cta_btn2_text": "Email Us",
+        "contact_email": "hello@mooreinsight.com",
+        "footer_brand_text": "Ancient wisdom. Modern intelligence. Content, consulting, and education at the meeting point of heritage and technology.",
+        "footer_copyright": "© 2026 Moore Insight LLC. All rights reserved.",
+        "footer_tagline": "Crafted in gold & black."
+      }
+    }
+  },
+  "order": ["main"]
+}
